@@ -1,0 +1,13 @@
+✔ install eslint plugin @done(21-10-12 18:07)
+
+todo:
+
+  ☐ create one getCountryReports with all fields
+  ☐ make query in container 
+  ☐ create behaviour container => component => changeDate => componentQueries with one graph
+  ☐ create on graph component per statistic
+  ☐ What is a graph component made of ?
+  ☐ convert to json via script 
+  ☐ get schema via script 
+
+

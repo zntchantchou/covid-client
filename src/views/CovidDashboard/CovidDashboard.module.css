@@ -1,0 +1,16 @@
+.dashboard {
+  background-color: #F6F8FA;
+  width: 100%;
+}
+
+.header {
+  height: 2.5em;
+  display:flex;
+  align-items: center;
+  padding: 1em 2em;
+}
+
+.title {
+  font-size: 2em;
+  width: 100%;
+}

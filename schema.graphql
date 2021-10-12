@@ -1,0 +1,85 @@
+"""
+Direct the client to resolve this field locally, either from the cache or local resolvers.
+"""
+directive @client(
+  """
+  When true, the client will never use the cache for this value. See
+  https://www.apollographql.com/docs/react/essentials/local-state/#forcing-resolvers-with-clientalways-true
+  """
+  always: Boolean
+) on FIELD | FRAGMENT_DEFINITION | INLINE_FRAGMENT
+
+"""
+Export this locally resolved field as a variable to be used in the remainder of this query. See
+https://www.apollographql.com/docs/react/essentials/local-state/#using-client-fields-as-variables
+"""
+directive @export(
+  """The variable name to export this field as."""
+  as: String!
+) on FIELD
+
+"""
+Specify a custom store key for this result. See
+https://www.apollographql.com/docs/react/advanced/caching/#the-connection-directive
+"""
+directive @connection(
+  """Specify the store key."""
+  key: String!
+
+  """
+  An array of query argument names to include in the generated custom store key.
+  """
+  filter: [String!]
+) on FIELD
+
+"""dailyReport"""
+type DailyReport {
+  fips: Float
+  provinceState: String
+  countryRegion: String
+  confirmed: Float
+  deaths: Float
+  recovered: Float
+  active: Float
+  createdAt: DateTime
+  combinedKey: String
+  lat: Float
+  long: Float
+  caseFatalityRatio: Float
+  incidenceRate: Float
+  iso: String
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+"""province"""
+type Province {
+  country: String!
+  iso: String!
+  population: String
+  combinedKey: String!
+  lat: String!
+  long: String!
+  provinceState: String!
+}
+
+"""country"""
+type Country {
+  country: String!
+  iso: String!
+  population: String
+  combinedKey: String!
+  lat: String!
+  long: String!
+  provinces: [Province!]!
+}
+
+type Query {
+  getCountryReports(countryIso: String!, endDate: String, startDate: String): [DailyReport!]!
+  getProvinceReports(countryIso: String!, province: String!, startDate: String, endDate: String): [DailyReport!]!
+  getCountries: [Country!]!
+  getCountry(iso: String!): Country!
+}
