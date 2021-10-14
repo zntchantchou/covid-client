@@ -9,6 +9,7 @@
 
 export interface GET_DEATHS_getCountryReports {
   deaths: number | null;
+  createdAt: any | null;
 }
 
 export interface GET_DEATHS {

@@ -32,6 +32,7 @@ export const GET_CONFIRMED = gql`
       countryIso: $countryIso
     ) {
       confirmed
+      createdAt
     }
   }
 `;
@@ -48,9 +49,11 @@ export const GET_CASE_FATALITY_RATIO = gql`
       countryIso: $countryIso
     ) {
       caseFatalityRatio
+      createdAt
     }
   }
 `;
+
 export const GET_INCIDENCE_RATE = gql`
   query GET_INCIDENCE_RATE(
     $startDate: String
@@ -63,6 +66,7 @@ export const GET_INCIDENCE_RATE = gql`
       countryIso: $countryIso
     ) {
       incidenceRate
+      createdAt
     }
   }
 `;
@@ -79,6 +83,7 @@ export const GET_DEATHS = gql`
       countryIso: $countryIso
     ) {
       deaths
+      createdAt
     }
   }
 `;

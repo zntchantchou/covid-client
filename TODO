@@ -1,13 +1,34 @@
 ✔ install eslint plugin @done(21-10-12 18:07)
+✔ create one getCountryReports with all fields @done(21-10-14 08:41)
+✔ make query in container @done(21-10-14 08:41)
+✘ convert to json via script @cancelled(21-10-14 08:42) (native with apollo cli)
+✔ get schema via script @done(21-10-14 08:42)
+✔ Create named intermediary graph container with lazy request and refetch onDateUpdate @done(21-10-14 14:52)
+✔ create one graph component per statistic @done(21-10-14 14:56)
+✔ create behaviour container => component => changeDate => componentQueries with one graph @done(21-10-14 14:56)
 
-todo:
+TODAY:
 
-  ☐ create one getCountryReports with all fields
-  ☐ make query in container 
-  ☐ create behaviour container => component => changeDate => componentQueries with one graph
-  ☐ create on graph component per statistic
-  ☐ What is a graph component made of ?
-  ☐ convert to json via script 
-  ☐ get schema via script 
+todo today:
+
+  ☐ add date formatting for graphs
+  ☐ add loader component
+  
+todo style :
+
+  ☐ add a theme ? and style main elements 
+  ☐ handle select style 
+
+
+TO BE DONE : 
+  ☐ show the use of fragments 
+  ☐ understand / ? show the use of directives ?
+  ☐ dockerize database and seed again  
+
+
+
+
+
+  
 
 

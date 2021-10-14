@@ -9,6 +9,7 @@
 
 export interface GET_INCIDENCE_RATE_getCountryReports {
   incidenceRate: number | null;
+  createdAt: any | null;
 }
 
 export interface GET_INCIDENCE_RATE {

@@ -9,6 +9,7 @@
 
 export interface GET_CASE_FATALITY_RATIO_getCountryReports {
   caseFatalityRatio: number | null;
+  createdAt: any | null;
 }
 
 export interface GET_CASE_FATALITY_RATIO {

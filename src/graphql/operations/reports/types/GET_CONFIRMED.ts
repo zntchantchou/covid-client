@@ -9,6 +9,7 @@
 
 export interface GET_CONFIRMED_getCountryReports {
   confirmed: number | null;
+  createdAt: any | null;
 }
 
 export interface GET_CONFIRMED {
