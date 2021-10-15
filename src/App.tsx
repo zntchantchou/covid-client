@@ -6,7 +6,7 @@ import CovidDashboard from "src/views/CovidDashboard/CovidDashboard";
 const App: React.FC = () => {
   return (
     <div className={styles.App}>
-      <Navbar/>
+      <Navbar title="Covid graphs" />
       <CovidDashboard/>
     </div>
   );

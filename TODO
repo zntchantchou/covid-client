@@ -13,12 +13,15 @@ todo today:
 
   ☐ add date formatting for graphs
   ☐ add loader component
+  ☐ Create function for tickCount depending on number of datapoints
+  ☐ Create function for yAxis based on amplitude of values 
   
 todo style :
 
   ☐ add a theme ? and style main elements 
   ☐ handle select style 
-
+  ☐ graphs should have a fixed size from start
+  ☐ Choose white and two more color and style all
 
 TO BE DONE : 
   ☐ show the use of fragments 

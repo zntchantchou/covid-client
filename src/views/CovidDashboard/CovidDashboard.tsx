@@ -16,9 +16,7 @@ import {
   GET_FULL_REPORTSVariables as IFullReportsVariables,
 } from "src/graphql/operations/reports/types/GET_FULL_REPORTS";
 
-import {
-  GET_INCIDENCE_RATE_getCountryReports as IIncidenceRate,
-} from "src/graphql/operations/reports/types/GET_INCIDENCE_RATE";
+import { GET_INCIDENCE_RATE_getCountryReports as IIncidenceRate } from "src/graphql/operations/reports/types/GET_INCIDENCE_RATE";
 
 import FlexibleGraph from "src/views/CovidDashboard/FlexibleGraph/FlexibleGraph";
 
@@ -41,48 +39,55 @@ const CovidDashboard: React.FC<ICovidDashboardProps> = () => {
     createdAt: r.createdAt,
   });
 
-  const IRData = reportsData?.getCountryReports.map((r) =>
-    extractReportProperty("incidenceRate", r)
-  ) as IIncidenceRate[];
+  const getReportsProperty = (property: keyof IFullReport) =>
+    reportsData?.getCountryReports.map((r) =>
+      extractReportProperty(property, r)
+    ) as IIncidenceRate[];
 
-  if (reportsData) console.log("reportsData", reportsData, IRData);
+  const incidenceRateData = getReportsProperty("incidenceRate");
+  const deathsData = getReportsProperty("deaths");
+  const caseFatalityRatioData = getReportsProperty("caseFatalityRatio");
+  const confirmedData = getReportsProperty("confirmed");
+
+  if (reportsData) console.log("reportsData", reportsData);
   if (reportsError) console.log("error", reportsError);
   if (reportsLoading) console.log("loading", reportsLoading);
   if (countriesData) countriesVariable(countriesData.getCountries);
 
   return (
     <div className={styles.dashboard}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>Covid data</h1>
-      </div>
       <div className={styles.content}>
         <FlexibleGraph
           title="Incidence rate"
           country={country}
           lazyQuery={GET_INCIDENCE_RATE}
           color="blue"
-          initialData={IRData}
+          initialData={incidenceRateData}
+          dataKey="incidenceRate"
         />
         <FlexibleGraph
           title="Case Fatality Ratio"
           country={country}
           lazyQuery={GET_CASE_FATALITY_RATIO}
           color="blue"
-          initialData={IRData}
+          initialData={caseFatalityRatioData}
+          dataKey="caseFatalityRatio"
         />
         <FlexibleGraph
           title="Confirmed cases"
           country={country}
           lazyQuery={GET_CONFIRMED}
           color="blue"
-          initialData={IRData}
+          initialData={confirmedData}
+          dataKey="confirmed"
         />
         <FlexibleGraph
           title="Deaths"
           country={country}
           lazyQuery={GET_DEATHS}
           color="blue"
-          initialData={IRData}
+          initialData={deathsData}
+          dataKey="deaths"
         />
       </div>
     </div>

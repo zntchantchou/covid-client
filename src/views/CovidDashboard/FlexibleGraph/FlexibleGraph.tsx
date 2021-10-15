@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Line from "src/components/graphs/Line/Line";
-import { ILineData } from "src/components/graphs/Line/types";
-import { format } from "date-fns";
 import { useLazyQuery } from "@apollo/client";
 import GraphCard from "src/components/graphs/GraphCard/GraphCard";
 import { optionsWithDate, ISelectOption } from "../utils/date";
+import Loader from "src/components/Loader/Loader";
+import format from "date-fns/format";
 import { DocumentNode } from "@apollo/client";
 
 interface IDataPoint {
@@ -15,16 +15,13 @@ interface IDataPoint {
   confirmed?: number | null;
 }
 
-interface IQueryResponse {
-  getCountryReports: IDataPoint[];
-}
-
 interface IFlexibleGraphProps {
   initialData: IDataPoint[];
   title: string;
   color?: string;
   country: string;
   lazyQuery: DocumentNode;
+  dataKey: string;
 }
 
 /**
@@ -37,37 +34,36 @@ const FlexibleGraph: React.FC<IFlexibleGraphProps> = ({
   country,
   lazyQuery,
   title,
+  dataKey
 }) => {
   const [graphData, setGraphData] = useState<IDataPoint[]>();
   const [startDate, setStartDate] = useState<string>();
-  const [fetchData, { data: lazyData, loading: lazyLoading }] = useLazyQuery(lazyQuery, {
-    variables: { startDate, countryIso: country },
-  });
+  const [fetchData, { data: lazyData, loading: lazyLoading }] = useLazyQuery(
+    lazyQuery,
+    {
+      variables: { startDate, countryIso: country },
+    }
+  );
 
   useEffect(() => {
     if (initialData) setGraphData(initialData);
-    if (lazyData) setGraphData(lazyData.getCountryReports)
+    if (lazyData) setGraphData(lazyData.getCountryReports);
   }, [initialData, lazyData]);
 
   useEffect(() => {
     if (startDate) fetchData();
   }, [startDate]);
 
-  const reportsToLineData = (reports: IDataPoint[]): ILineData => {
-    let yProperty: keyof IDataPoint;
-    if (reports.length) {
-      yProperty = Object.keys(reports[0]).filter(
-        (p) => p !== "createdAt" && p !== "__typename"
-      )[0] as keyof IDataPoint;
-    }
-    const data = reports
-      .map((r) => ({
-        x: format(new Date(r.createdAt), "dd/MMM"),
-        y: r[yProperty] as number,
-      }))
-      .filter((v) => !isNaN(v.y));
+  useEffect(() => {
+    if (graphData) reportsToLineData(graphData);
+  }, [graphData]);
 
-    return [{ data, id: "incidence rate", color: "hsl(320, 70%, 50%)" }];
+  // eslint-disable-next-line
+  // @ts-ignore
+  const reportsToLineData = (reports: IDataPoint[]): any[] => {
+    const formatted = reports.map((r) => ({ ...r, name: format(new Date(r.createdAt), "dd-MM")}));
+    console.log("formatted", formatted);
+    return formatted;
   };
 
   const handleDateChange = (option: ISelectOption) => {
@@ -75,21 +71,14 @@ const FlexibleGraph: React.FC<IFlexibleGraphProps> = ({
     setStartDate(asDate);
   };
 
-  return graphData ? (
+  return (
     <GraphCard
       title={title}
       withDate
       onDateChange={(v) => handleDateChange(v)}
-      content={
-        <Line
-          data={reportsToLineData(graphData)}
-          axisBottomLegend="date"
-          axisLeftLabel="incidence rate"
-        />
-      }
+      content={lazyLoading || !graphData ? <Loader /> : <Line dataKey={dataKey} data={reportsToLineData(graphData)}/>}
     />
-  ) : // render loader instead
-  null;
+  );
 };
 
 export default FlexibleGraph;
