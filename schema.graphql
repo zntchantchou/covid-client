@@ -77,9 +77,19 @@ type Country {
   provinces: [Province!]!
 }
 
+"""user"""
+type User {
+  firstName: String!
+  lastName: String!
+  email: String!
+  service: String!
+  avatar: String!
+  position: String!
+}
+
 type Query {
   getCountryReports(countryIso: String!, endDate: String, startDate: String): [DailyReport!]!
-  getProvinceReports(countryIso: String!, province: String!, startDate: String, endDate: String): [DailyReport!]!
   getCountries: [Country!]!
   getCountry(iso: String!): Country!
+  getUser: User!
 }

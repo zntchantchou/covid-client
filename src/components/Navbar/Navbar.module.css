@@ -8,6 +8,7 @@
   top: 0;
   z-index:2;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding-left: 3em;
 }
@@ -15,4 +16,11 @@
 .title {
   font-size: 2em;
   color: #fff;
+}
+
+.navRight {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  width: 150px;
 }

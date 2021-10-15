@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "src/components/graphs/GraphCard/GraphCard.module.css";
+import styles from "src/components/cards/GraphCard/GraphCard.module.css";
 import Select from "react-select";
 import { selectOptions, ISelectOption } from "src/views/CovidDashboard/utils/date";
 // TODO fetch data

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './App.module.css';
-import Navbar from 'src/components/nav/Navbar';
+import Navbar from 'src/components/Navbar/Navbar';
 import CovidDashboard from "src/views/CovidDashboard/CovidDashboard";
 
 const App: React.FC = () => {

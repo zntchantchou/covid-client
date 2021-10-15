@@ -1,0 +1,36 @@
+.userProfile {
+  outline: none;
+  width: 200px;
+}
+
+.avatar {
+  height: 70px;
+  width: 70px;
+  cursor: pointer;
+}
+
+.avatar > img {
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+}
+
+.profileData > ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.profileData li {
+  font-weight: bold;
+  font-size: 0.85em;
+}
+.profileData {
+  z-index: 50;
+  height: 12em;
+  width: 200px;
+  transform: translate(-140px, 140px);
+  background-color: #fff;
+  border: #0033a0 solid 2px;
+  border-radius: 5px;
+}

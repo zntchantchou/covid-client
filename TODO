@@ -6,32 +6,30 @@
 ✔ Create named intermediary graph container with lazy request and refetch onDateUpdate @done(21-10-14 14:52)
 ✔ create one graph component per statistic @done(21-10-14 14:56)
 ✔ create behaviour container => component => changeDate => componentQueries with one graph @done(21-10-14 14:56)
+✔ Create function for yAxis based on amplitude of values @done(21-10-15 13:29)
+✔ add loader component @done(21-10-15 13:29)
 
 TODAY:
 
-todo today:
-
-  ☐ add date formatting for graphs
-  ☐ add loader component
-  ☐ Create function for tickCount depending on number of datapoints
-  ☐ Create function for yAxis based on amplitude of values 
+  todo today:
+    ☐ handle visuals of loading better
+    ☐ add date formatting for graphs
+    ☐ add a policy for mocking on the getUser query
+    todo style :
+      
+      ☐ add min width and height to graphCards
+    ☐ make graphs larger 
+    ☐ add a theme ? and style main elements @started(21-10-15 13:04)
+    ☐ handle select style 
+    ☐ graphs should have a fixed size from start
+    ☐ Choose white and two more color and style all
   
-todo style :
-
-  ☐ add a theme ? and style main elements 
-  ☐ handle select style 
-  ☐ graphs should have a fixed size from start
-  ☐ Choose white and two more color and style all
-
-TO BE DONE : 
-  ☐ show the use of fragments 
-  ☐ understand / ? show the use of directives ?
-  ☐ dockerize database and seed again  
-
-
-
-
-
+  TO BE DONE : 
+    ☐ show the use of fragments 
+    ☐ understand / ? show the use of directives ?
+    ☐ dockerize database and seed again  
+  
+  
   
 
 

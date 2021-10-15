@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Line from "src/components/graphs/Line/Line";
 import { useLazyQuery } from "@apollo/client";
-import GraphCard from "src/components/graphs/GraphCard/GraphCard";
+import GraphCard from "src/components/cards/GraphCard/GraphCard";
 import { optionsWithDate, ISelectOption } from "../utils/date";
 import Loader from "src/components/Loader/Loader";
 import format from "date-fns/format";
@@ -61,9 +61,7 @@ const FlexibleGraph: React.FC<IFlexibleGraphProps> = ({
   // eslint-disable-next-line
   // @ts-ignore
   const reportsToLineData = (reports: IDataPoint[]): any[] => {
-    const formatted = reports.map((r) => ({ ...r, name: format(new Date(r.createdAt), "dd-MM")}));
-    console.log("formatted", formatted);
-    return formatted;
+    return reports.map((r) => ({ ...r, name: format(new Date(r.createdAt), "dd-MM")}));
   };
 
   const handleDateChange = (option: ISelectOption) => {

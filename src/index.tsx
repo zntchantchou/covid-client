@@ -4,10 +4,13 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import {typeDefs} from "src/graphql/typedefs/typedefs";
+import {policies} from "src/graphql/policies/policies";
 
 const client = new ApolloClient({
   uri: "http://localhost:3001/graphql",
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({typePolicies: policies}),
+  typeDefs,
 });
 
 ReactDOM.render(
