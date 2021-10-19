@@ -1,6 +1,6 @@
 .navbar {
   background-color: #0033a0;
-  width: 100%;
+  width: 95%;
   height: 5em;
   position: fixed;
   right: 0;
@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 3em;
+  padding: 0 3em;
 }
 
 .title {
@@ -18,9 +18,9 @@
   color: #fff;
 }
 
-.navRight {
+.profileSection {
   display: flex;
   height: 100%;
   align-items: center;
-  width: 150px;
+  box-sizing: border-box;
 }

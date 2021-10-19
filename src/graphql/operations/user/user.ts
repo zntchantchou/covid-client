@@ -8,7 +8,6 @@ export const GET_USER_PROFILE = gql`
       lastName
       email
       position
-      avatar
       status @client
     }
   }

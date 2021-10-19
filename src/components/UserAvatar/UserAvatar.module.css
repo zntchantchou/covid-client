@@ -1,0 +1,25 @@
+.avatar {
+  height: 70px;
+  width: 80px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
+.avatar > img {
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+}
+
+.profileData {
+  z-index: 2;
+  transform: translate(-140px, 140px);
+  background-color: #fff;
+  border: #0033a0 solid 2px;
+  border-radius: 5px;
+}
+
+.profileData div{
+  background-color: rgb(238, 234, 234);
+}

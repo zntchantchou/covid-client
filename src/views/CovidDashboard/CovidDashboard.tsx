@@ -45,7 +45,7 @@ const CovidDashboard: React.FC<ICovidDashboardProps> = () => {
     ) as IIncidenceRate[];
 
   const incidenceRateData = getReportsProperty("incidenceRate");
-    const deathsData = getReportsProperty("deaths");
+  const deathsData = getReportsProperty("deaths");
   const caseFatalityRatioData = getReportsProperty("caseFatalityRatio");
   const confirmedData = getReportsProperty("confirmed");
 

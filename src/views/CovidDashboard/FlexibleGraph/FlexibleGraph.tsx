@@ -54,13 +54,7 @@ const FlexibleGraph: React.FC<IFlexibleGraphProps> = ({
     if (startDate) fetchData();
   }, [startDate]);
 
-  useEffect(() => {
-    if (graphData) reportsToLineData(graphData);
-  }, [graphData]);
-
-  // eslint-disable-next-line
-  // @ts-ignore
-  const reportsToLineData = (reports: IDataPoint[]): any[] => {
+  const reportsToLineData = (reports: IDataPoint[]) => {
     return reports.map((r) => ({ ...r, name: format(new Date(r.createdAt), "dd-MM")}));
   };
 

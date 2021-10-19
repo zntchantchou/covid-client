@@ -1,36 +1,16 @@
 .userProfile {
-  outline: none;
-  width: 200px;
-}
-
-.avatar {
-  height: 70px;
-  width: 70px;
-  cursor: pointer;
-}
-
-.avatar > img {
-  border-radius: 50%;
-  height: 70px;
-  width: 70px;
-}
-
-.profileData > ul {
-  list-style: none;
-  padding: 0;
-  width: 100%;
-}
-
-.profileData li {
-  font-weight: bold;
-  font-size: 0.85em;
-}
-.profileData {
-  z-index: 50;
-  height: 12em;
-  width: 200px;
-  transform: translate(-140px, 140px);
-  background-color: #fff;
-  border: #0033a0 solid 2px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1em 2em;
+  flex-wrap: wrap;
+  top: 5.1em;
+  right: 25px;
   border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  background-color: #0033a0;
 }
+

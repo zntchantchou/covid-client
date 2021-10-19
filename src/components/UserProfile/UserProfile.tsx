@@ -1,52 +1,37 @@
-import React, { useEffect, useState } from "react";
-import { useQuery, useLazyQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
+import React from "react";
+import { GET_USER_PROFILE } from "src/graphql/operations/user/user";
 import {
-  GET_USER_PROFILE,
-  GET_USER_AVATAR,
-} from "src/graphql/operations/user/user";
+  GET_USER_PROFILE as IGetProfileResponse,
+} from "src/graphql/operations/user/types/GET_USER_PROFILE";
+import styles from "./UserProfile.module.css";
+import Loader from "src/components/Loader/Loader";
 
-import { GET_USER_AVATAR as IGetAvatarResponse } from "src/graphql/operations/user/types/GET_USER_AVATAR";
-import { GET_USER_PROFILE as IGetProfileResponse } from "src/graphql/operations/user/types/GET_USER_PROFILE";
-import styles from "src/components/UserProfile/UserProfile.module.css";
 
 const UserProfile: React.FC = () => {
-  const { data: avatar } = useQuery<IGetAvatarResponse>(GET_USER_AVATAR);
-  const [displayProfileData, setDisplayProfileData] = useState(false);
-  const [getProfile, { data: profile }] =
-    useLazyQuery<IGetProfileResponse>(GET_USER_PROFILE);
+  const { data: userProfile, loading } =
+    useQuery<IGetProfileResponse>(GET_USER_PROFILE);
 
-  const handleClick = () => {
-    getProfile();
-    setDisplayProfileData(!displayProfileData);
-  };
-  const generateProfileWrapper = () => {
-    const profileData = profile?.getUser;
-    if (profileData && displayProfileData) {
-
-      // eslint-disable-next-line
-      // @ts-ignore
-      const { firstName, lastName, email, position, status } = profileData;
-      return (
-        <div className={styles.profileData}>
-          <div>firstname: {firstName}</div>
-          <div>lastname: {lastName}</div>
-          <div>position: {position}</div>
-          <div>email: {email}</div>
-          <div>status: {status}</div>
-        </div>
-      );
-    }
-    return null;
-  };
-
-  return avatar?.getUser ? (
+  const content = loading ? (
+    <Loader width={100}/>
+  ) : (
     <>
-      <div className={styles.avatar} onClick={() => handleClick()}>
-        <img src={avatar.getUser.avatar} alt="user avatar" />
+      <div className={styles.userProfileItem}>
+        {userProfile?.getUser.firstName}
       </div>
-      {generateProfileWrapper()}
+      <div className={styles.userProfileItem}>
+        {userProfile?.getUser.lastName}
+      </div>
+      <div className={styles.userProfileItem}>{userProfile?.getUser.email}</div>
+      <div className={styles.userProfileItem}>
+        {userProfile?.getUser.position}
+      </div>
+      <div className={styles.userProfileItem}>
+        {userProfile?.getUser?.status}
+      </div>
     </>
-  ) : null;
+  );
+  return <div className={styles.userProfile}>{content}</div>;
 };
 
 export default UserProfile;

@@ -12,7 +12,7 @@ export interface GET_USER_PROFILE_getUser {
   lastName: string;
   email: string;
   position: string;
-  avatar: string;
+  status: string | null;
 }
 
 export interface GET_USER_PROFILE {
